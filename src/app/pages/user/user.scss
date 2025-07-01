@@ -1,0 +1,58 @@
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+}
+p{
+  font-size: 28px;
+}
+.git{
+  text-decoration: none;
+  color: white;
+  font-size: 28px;
+}
+
+.rating-block {
+   background-color: #011036;
+  border-radius: 8px;
+  padding: 20px;
+
+  margin-top:20px ;
+  margin-bottom: 20px;
+}
+
+.rating-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.rating-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rating-item:last-child {
+  border-bottom: none;
+}
+
+.link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.rating-value {
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
+.like-icon {
+  color: green;
+  margin-left: 5px;
+}

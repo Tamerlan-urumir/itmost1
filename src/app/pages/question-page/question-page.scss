@@ -1,0 +1,54 @@
+h1{
+  font-size: 4vh;
+    margin-top: 7vh;
+    line-height: 30px;
+    display: inline-block;
+    margin-left: 15px;
+    /* width: 58vw; */
+    text-align: center;
+}
+.question-item{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.skill_tags{
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--light-color);
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
+    height: 24px;
+    margin-right: 4px;
+    margin-left: 10px;
+}
+.question
+{
+    background-color: #011036;
+    margin-left: 18px;
+    margin-top: 20px;
+    border: 2px solid;
+    border-radius: 4px;
+    font-size: 4vh;
+    height: 11vh;
+
+}
+.rang-p
+{
+    font-size: 4vh;
+    color: #00FF44;
+    position: absolute;
+    right: 3vw;
+    margin-top: -2vh;
+}
+.rang-n
+{
+    font-size: 4vh;
+    color: #ff0000;
+    position: absolute;
+    right: 3vw;
+    margin-top: -2vh;
+}
+.tag{
+    position:absolute;
+}

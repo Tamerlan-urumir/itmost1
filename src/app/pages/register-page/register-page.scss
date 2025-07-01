@@ -1,0 +1,73 @@
+:host{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+h1{
+    font-size: 3vh;
+    line-height: 56px;
+    display: inline-block;
+    
+    border: 3px solid;
+    border-radius: 15px;
+    margin-left: 18px;
+    width: 22vw;
+    text-align: center;
+
+}
+.content{
+    background-color: #00358B;
+    width: 50dvw;
+    z-index: 80%;
+    height: 69dvh;
+    position: absolute;
+    top: 14%;
+    left: 25%;
+    justify-content: center;
+    display: inline-block;
+    border: 3px solid;
+    border-radius: 10%;
+}
+.join{
+    font-weight: 700;
+    font-size: 5vh;
+    line-height: 48px;
+    margin-top: 20vw;
+    align-items: center;
+    margin-left: 3vw;
+}
+.join-input
+{
+display: block;
+    border-radius: 5px;
+    background-color: #728896;
+    color: white;
+    font-size: 5vh;
+    margin-left: 5vh;
+}
+
+.beta{position:absolute;
+    right: 10;
+    background-color: #010E31;
+}
+::placeholder{
+    color:white;
+}
+.join-button{
+    background-color: #010E31;
+    color: white;
+    width: 42vw;
+    height: 9vh;
+    font-size: 5vh;
+    margin-left: 3vw;
+    margin-top: 2vh;
+    border-radius: 26px;
+    border: 2px solid;
+}
+.chek{
+    margin-left: 5vh;
+    margin-top: 2vh;
+    font-size: 3vw;
+}
+.cheker{transform: scale(2); accent-color:white;
+}
+a { color: inherit; } 

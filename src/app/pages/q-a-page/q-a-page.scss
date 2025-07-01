@@ -1,0 +1,36 @@
+.quest{
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #011036;
+}
+.answer{
+    border: 2px solid;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #011036;
+}
+.rang-p
+{
+    font-size: 4vh;
+    color: #00FF44;
+    position: absolute;
+    right: 3vw;
+    margin-top: -2vh;
+}
+.rang-n
+{
+    font-size: 4vh;
+    color: #ff0000;
+    position: absolute;
+    right: 3vw;
+    margin-top: -2vh;
+}
+.tag{
+    position:absolute;
+}
+.description{
+    margin-top: 57px;
+}
