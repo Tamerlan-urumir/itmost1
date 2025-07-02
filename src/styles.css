@@ -1,0 +1,53 @@
+:root {
+  --dark-color:#000000;
+  --light-color:#ffffff;
+  --primary-color:#ae7aff;
+}
+
+body {
+  color: var(--light-color);
+}
+
+.skill_tags {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--light-color);
+  display: inline;
+  font-size: 12px;
+  font-weight: 700;
+  height: 24px;
+  margin-right: 4px;
+}
+
+.btn {
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.h6 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+html {
+  background-color: #003A97;
+  width: 100vw;
+}
+
+img {
+  width: 4vw;
+  height: 4vh;
+}
+
+/*# sourceMappingURL=styles.css.map */

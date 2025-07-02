@@ -7,9 +7,12 @@ import { profile } from '../interfaces/profile.interface';
 })
 export class profileService {
   http =inject(HttpClient)
-  baseApiUrl='https://icherniakov.ru/yt-course/'
+  baseApiUrl='http://localhost:5062/api/'
   constructor() { }
-  getTestAccounts(){
-    return this.http.get<profile[]>(`${this.baseApiUrl}account/test_accounts`)
+  getDate(dopApiUrl:string){
+    return this.http.get<profile[]>(`${this.baseApiUrl}${dopApiUrl}`)
+  }
+  postDate(dopApiUrl:string){
+    return this.http.get<profile[]>(`${this.baseApiUrl}${dopApiUrl}`)
   }
 }
