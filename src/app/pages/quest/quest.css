@@ -3,9 +3,11 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
-h1{
-  color:black;
+
+h1 {
+  color: black;
 }
+
 .search-container {
   display: flex;
   margin-bottom: 20px;
@@ -18,7 +20,7 @@ h1{
   border-radius: 4px 0 0 4px;
   background-color: #011036;
   font-size: 16px;
-  color:white;
+  color: white;
 }
 
 .search-button {
@@ -46,8 +48,7 @@ h1{
   border-radius: 4px 0 0 4px;
   font-size: 16px;
   background-color: #011036;
-
-  color:white;
+  color: white;
 }
 
 .add-button {
@@ -71,9 +72,11 @@ h1{
   border-radius: 15px;
   font-size: 14px;
 }
-::placeholder{
-  color:white
+
+::placeholder {
+  color: white;
 }
+
 .ask-button {
   padding: 12px 24px;
   background-color: #ea4335;
@@ -103,6 +106,7 @@ h1{
   color: #666;
   font-size: 14px;
 }
+
 /* Modal Styles */
 .modal {
   display: none;
@@ -181,7 +185,7 @@ h1{
   font-size: 0.95rem;
 }
 
-.form-group input[type="text"],
+.form-group input[type=text],
 .form-group select,
 .form-group textarea {
   width: 100%;
@@ -193,7 +197,7 @@ h1{
   background-color: white;
 }
 
-.form-group input[type="text"]:focus,
+.form-group input[type=text]:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
@@ -255,13 +259,13 @@ h1{
   .modal-content {
     width: 95%;
   }
-
   .modal-content h2 {
     padding: 15px;
     font-size: 1.3rem;
   }
-
   #questionForm {
     padding: 15px;
   }
 }
+
+/*# sourceMappingURL=quest.css.map */

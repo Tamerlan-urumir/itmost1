@@ -1,14 +1,15 @@
-import {Component, Inject} from '@angular/core';
+import {Component, HostListener, Inject} from '@angular/core';
 import {profileService} from '../../data/services/profile';
 import {Question} from '../../data/interfaces/quest.interface';
 import {CommonModule} from '@angular/common';
 import {Tags} from '../../data/interfaces/tags.interface';
 import {Category} from '../../data/interfaces/category.interface';
 import {concatMap,tap,finalize,Observable,from,toArray,map,last,catchError,filter,throwError,of,defaultIfEmpty} from 'rxjs';
-
+import {  EventEmitter, Output } from '@angular/core';
+import {FormBuilder, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
 @Component({
   selector: 'app-quest',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './quest.html',
   styleUrl: './quest.scss'
 })
@@ -25,7 +26,14 @@ export class Quest {
   catid:number[]=[];
   squest:number[]=[];
   search:number[]=[];
-
+  showModal = false;
+  questionData:{title:string, content:string,isUrgent: boolean,categoryIds:number[],tagIds:number[]}= {
+    title: '',
+    content: '',
+    isUrgent: false,
+    categoryIds: [],
+    tagIds: []
+  };
   constructor(private profileService: profileService) {
     this.profileService.getDate("/questions")
       .subscribe((val :Question[]) => {
@@ -202,8 +210,40 @@ export class Quest {
     else
       this.catchek [this.catid.indexOf(id)]= !this.catchek[this.catid.indexOf(id)];
   }
+  openModal() {
+    this.showModal = true;
+  }
 
-  AddQuestion(){
+  closeModal() {
+    this.showModal = false;
+  }
 
+  submitQuestion(form: NgForm) {
+
+    if (form.valid) {
+      for(let i=0;i<this.tagchek.length;i++){
+        if(this.tagchek[i]) {
+          this.questionData.tagIds.push(this.tagid[i])
+        }
+      }
+      for(let i=0;i<this.catchek.length;i++){
+        if(this.catchek[i]) {
+          this.questionData.categoryIds.push(this.catid[i])
+        }
+      }
+      console.log('Данные форыы:', this.questionData);
+      this.profileService.postDate("/questions?userProfileId=1",this.questionData);
+      // Здесь можно добавить логику отправки данных
+      this.closeModal();
+      form.resetForm();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const modal = document.getElementById('questionModal');
+    if (event.target === modal) {
+      this.closeModal();
+    }
   }
 }

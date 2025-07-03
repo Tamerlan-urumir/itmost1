@@ -39,7 +39,56 @@
   </div>
 </div>
 
-<button class="ask-button" (click)="AddQuestion()">Задать вопрос</button>
+<button class="ask-button" id="askButton" (click)="openModal()">Задать вопрос</button>
+
+<div id="questionModal" class="modal" [class.show]="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Задать новый вопрос</h2>
+
+    <form #questionForm="ngForm" (ngSubmit)="submitQuestion(questionForm)">
+      <div class="form-group">
+        <label for="questionTitle">Заголовок вопроса</label>
+        <input type="text" id="questionTitle" name="title"
+               [(ngModel)]="questionData.title"
+               [value]="questtitle.value"
+               placeholder="Введите заголовок вопроса" required #title>
+      </div>
+      <div class="form-group">
+        <div class="tags-container">
+          @for (cat of categoryq; track cat.id){
+            @if (catchek[$index]) {
+            <span class="tag">
+                  {{cat.name}}
+            </span>
+            }
+          }
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="tags-container">
+          @for (tag of tagsq; track tag.id){
+            @if (tagchek[$index]) {
+              <span class="tag">
+                  {{tag.name}}
+              </span>
+            }
+          }
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="questionBody">Основная часть вопроса</label>
+        <textarea id="questionBody" name="content"
+                  [(ngModel)]="questionData.content"
+                  placeholder="Подробно опишите ваш вопрос" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" >Опубликовать вопрос</button>
+    </form>
+  </div>
+</div>
+
+
 
 <div class="question-list">
   @for (quest of quests; track quest.id) {
