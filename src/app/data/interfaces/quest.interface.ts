@@ -1,6 +1,14 @@
+import {Tags} from './tags.interface';
+import {Category} from './category.interface';
+
 export interface Question {
+  id: number;
   title: string;
-  category: string[];
-  tags: string[];
-  raiting:number
+  content: string;
+  isUrgent: boolean;
+  createdAt: string;
+  updatedAt: string;
+  userProfileId: number;
+  tags: Tags[];
+  categories: Category[];
 }

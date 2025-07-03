@@ -1,52 +1,59 @@
 <body>
 
 <div class="search-container">
-  <input type="text" class="search-input" placeholder="Поиск...">
-  <button class="search-button">🔍</button>
+  <input type="text" class="search-input" placeholder="Поиск..." #questtitle>
+  <button class="search-button"(click)="Search(questtitle.value)">🔍</button>
 </div>
 
 <div class="input-group">
   <h3>Категории</h3>
   <div class="input-container">
-    <input type="text" class="input-field" placeholder="Введите категорию">
+    <input type="text" class="input-field" placeholder="Введите категорию" #categoryinput>
     <button class="add-button">+</button>
   </div>
   <div class="categories-container">
-    <span class="category">Программирование</span>
-    <span class="category">Дизайн</span>
-    <span class="category">Маркетинг</span>
+    @for (cat of categoryq; track cat.id){
+      <span class="category" class="toggle-btn"
+            [class.active]="catchek[$index]"
+            (click)="toggleCheck(cat.id,'cat')">
+      {{ catchek[$index] ? '✓ ' + cat.name : cat.name }}
+    </span>
+    }
   </div>
 </div>
 
 <div class="input-group">
   <h3>Теги</h3>
   <div class="input-container">
-    <input type="text" class="input-field" placeholder="Введите тег">
+    <input type="text" class="input-field" placeholder="" #taginput>
     <button class="add-button">+</button>
   </div>
   <div class="tags-container">
-    <span class="tag">HTML</span>
-    <span class="tag">CSS</span>
-    <span class="tag">JavaScript</span>
+    @for (tag of tagsq; track tag.id){
+    <span class="tag" class="toggle-btn"
+          [class.active]="tagchek[$index]"
+          (click)="toggleCheck(tag.id,'tag')">
+      {{ tagchek[$index] ? '✓ ' + tag.name : tag.name }}
+    </span>
+    }
   </div>
 </div>
 
-<button class="ask-button">Задать вопрос</button>
+<button class="ask-button" (click)="AddQuestion()">Задать вопрос</button>
 
 <div class="question-list">
-  @for (quest of quests; track quest.title) {
+  @for (quest of quests; track quest.id) {
     <div class="question-block">
       <div class="question-title">{{quest.title}}</div>
       <div class="question-meta">Категория:
-        @for (ctegory of quest.category; track ctegory) {
-        <span class="category">{{ctegory}}</span>
+        @for (ctegory of quest.categories; track ctegory) {
+        <span class="category">{{ctegory.name}}</span>
       }</div>
       <div class="question-meta">Теги:
         @for (tag of quest.tags; track tag) {
-          <span class="tag">{{tag}}</span>
+          <span class="tag">{{tag.name}}</span>
         }
       </div>
-      <div class="question-title">{{quest.raiting}}</div>
     </div>
   } @empty {
     <p>Нет доступных вопросов</p>
