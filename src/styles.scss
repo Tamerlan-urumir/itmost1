@@ -1,4 +1,4 @@
-@import "fonts";
+
 :root
 {
 --dark-color:#000000;
@@ -41,6 +41,8 @@ background-color: #003A97;
 width: 100vw;
 }
 img{
-            width: 4vw;
-    height: 4vh;
+            width: 30px;
+    height: 30px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

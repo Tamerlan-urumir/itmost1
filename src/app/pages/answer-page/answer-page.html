@@ -1,34 +1,18 @@
 <h1>Мои ответы</h1>
-<div><div class="answer">
-    <div class="answer-item">Название вопроса</div>
-    <div class="tag">
-    <div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div>
-    </div>
+
+@for (quest of quests; track quest.id) {
+    <div class="quest">
+    <div class="quest-item"><a href="http://localhost:4200/qa">{{quest.title}}</a></div>
+    <div class="categori"> Категории
+        @for (categories of quest.categories; track categories.id ) {
+    <div class="skill_tags">{{ categories.name }}</div>
+  }
+</div>
+   <div class="tag"> тэги
+  @for (tag of quest.tags; track tag.id) {
+    <div class="skill_tags">{{ tag.name }}</div>
+  }
+</div>
     <div class="rang-p">+5 <img  src="../../../assets/image/like.png"></div>
-    
 </div>
-<div class="answer">
-    <div class="answer-item">Название вопроса</div>
-    <div class="tag">
-    <div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div>
-    </div>
-    <div class="rang-p">+5 <img  src="../../../assets/image/like.png"></div>
-    
-</div>
-<div class="answer">
-    <div class="answer-item">Название вопроса</div>
-    <div class="tag">
-    <div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div>
-    </div>
-    <div class="rang-n">-5 <img  src="../../../assets/image/dislike.png"></div>
-    
-</div>
-<div class="answer">
-    <div class="answer-item">Название вопроса</div>
-    <div class="tag">
-    <div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div>
-    </div>
-    <div class="rang-p">+5 <img  src="../../../assets/image/like.png"></div>
-    
-</div>
-</div>
+}

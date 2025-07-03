@@ -7,7 +7,7 @@ h1{
     /* width: 58vw; */
     text-align: center;
 }
-.question-item{
+.quest-item{
     margin-left: 10px;
     margin-top: 10px;
 }
@@ -22,17 +22,18 @@ h1{
     margin-right: 4px;
     margin-left: 10px;
 }
-.question
+.quest
 {
-    background-color: #011036;
-    margin-left: 18px;
+        margin-left: 18px;
     margin-top: 20px;
     border: 2px solid;
+    background-color: #011036;
     border-radius: 4px;
     font-size: 4vh;
-    height: 11vh;
+    height: 17vh;
 
 }
+a { color: inherit;  }
 .rang-p
 {
     font-size: 4vh;
@@ -51,4 +52,16 @@ h1{
 }
 .tag{
     position:absolute;
+    margin-top:14px;
+    margin-left:15px;
+}
+.categori{
+  padding: 4px 8px;
+    border-radius: 4px;
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
+    height: 24px;
+    margin-right: 4px;
+    margin-left: 10px;
 }

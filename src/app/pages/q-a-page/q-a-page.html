@@ -1,28 +1,96 @@
-<div class="quest">
-<h1>Название вопроса</h1>
-<div class="tag">
-    <div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div><div class="skill_tags">frontend</div>
+@if (loading) {
+  <div class="loading">Загрузка данных...</div>
+}
+
+@if (error) {
+  <div class="error">Ошибка загрузки данных</div>
+}
+
+@if (data; as d) {
+  <div class="quest">
+    <h1>{{ d.question.title }}</h1>
+    
+    <div class="tag">
+      @for (tag of d.question.tags; track tag.id) {
+        <div class="skill_tags">{{ tag.name }}</div>
+      }
     </div>
-    <div class="rang-p"><img  src="../../../assets/image/like.png"> +5 <img  src="../../../assets/image/dislike.png"></div>
     
+    <div class="{{ getRatingClass(d.question.ratingPositive, d.question.ratingNegative) }}">
+      <img src="assets/image/like.png"> 
+      {{ getRatingValue(d.question.ratingPositive, d.question.ratingNegative) }}
+      <img src="assets/image/dislike.png">
+    </div>
     
-    <div class="description"> подробное описание вопроса</div>
+    <div class="description">{{ d.question.content }}</div>
+    
+    @if (d.question.categories.length > 0) {
+      <div class="categories">
+        Категории:
+        @for (category of d.question.categories; track category.id) {
+          <span class="categori">{{ category.name }}</span>
+        }
+      </div>
+    }
+    
+    <div class="author">Автор: {{ d.question.author.fio }}</div>
+    
+    <hr>
+    
+    @if (d.questionComments.length > 0) {
+      <div class="comment-section">
+        <h3>Комментарии к вопросу:</h3>
+        @for (comment of d.questionComments; track comment.id) {
+          <div class="comment">{{ comment.content }}</div>
+        }
+      </div>
+    }
+    <div class="add-comment">
+  <button mat-button color="primary" (click)="openQuestionCommentDialog()">
+     Добавить комментарий
+  </button>
 </div>
-<div class="answer">
-<h1>Название ответа</h1>
-<div class="rang-p"><img  src="../../../assets/image/like.png"> +5 <img  src="../../../assets/image/dislike.png"></div>
-<div>
-    подробный ответ
+  </div>
+<div class="answer-button">
+  <button mat-raised-button color="primary" (click)="openAnswerDialog()">
+     Ответить на вопрос
+  </button>
 </div>
-<hr>
-<div class="comment"> комментарий </div>
+  @if (d.answers.length > 0) {
+    <div class="answers">
+      <h2>Ответы:</h2>
+      
+      @for (answer of d.answers; track answer.id) {
+        <div class="answer">
+          <h3>Ответ от {{ answer.authorFIO }}</h3>
+          
+          <div class="rang-p">
+            <img src="assets/image/like.png"> +0
+            <img src="assets/image/dislike.png">
+          </div>
+          
+          <div class="content">{{ answer.content }}</div>
+          
+          
+          <hr>
+          
+          @if (d.answerComments[answer.id].length > 0) {
+            <div class="comment-section">
+              <h4>Комментарии:</h4>
+              @for (comment of d.answerComments[answer.id]; track comment.id) {
+                <div class="comment">{{ comment.content }}</div>
+              }
+            </div>
+          }
+          <div class="add-comment">
+  <button mat-button color="primary" (click)="openAnswerCommentDialog(answer.id)">
+     Добавить комментарий
+  </button>
 </div>
-<div class="answer">
-<h1>Название ответа</h1>
-<div class="rang-n"><img  src="../../../assets/image/like.png"> -5 <img src="../../../assets/image/dislike.png" alt="My Image"></div>
-<div>
-    подробный ответ
-</div>
-<hr>
-<div class="comment"> комментарий </div>
-</div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="no-answers">Пока нет ответов на этот вопрос</div>
+  }
+}

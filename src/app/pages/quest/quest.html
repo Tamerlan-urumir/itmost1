@@ -33,18 +33,23 @@
 
 <button class="ask-button">Задать вопрос</button>
 
-<div class="question-block">
-  <div class="question-title">Как создать адаптивную верстку?</div>
-  <div class="question-meta">Категория: Программирование | Теги: HTML, CSS</div>
-</div>
-
-<div class="question-block">
-  <div class="question-title">Какие тренды в дизайне на 2023 год?</div>
-  <div class="question-meta">Категория: Дизайн | Теги: UI, UX</div>
-</div>
-
-<div class="question-block">
-  <div class="question-title">Как продвигать сайт в поисковых системах?</div>
-  <div class="question-meta">Категория: Маркетинг | Теги: SEO, Google</div>
+<div class="question-list">
+  @for (quest of quests; track quest.title) {
+    <div class="question-block">
+      <div class="question-title">{{quest.title}}</div>
+      <div class="question-meta">Категория:
+        @for (ctegory of quest.category; track ctegory) {
+        <span class="category">{{ctegory}}</span>
+      }</div>
+      <div class="question-meta">Теги:
+        @for (tag of quest.tags; track tag) {
+          <span class="tag">{{tag}}</span>
+        }
+      </div>
+      <div class="question-title">{{quest.raiting}}</div>
+    </div>
+  } @empty {
+    <p>Нет доступных вопросов</p>
+  }
 </div>
 </body>
