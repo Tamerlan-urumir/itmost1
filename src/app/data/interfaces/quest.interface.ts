@@ -1,5 +1,6 @@
 export interface Question {
   title: string;
-  category: number[];
-  tags: number[];
+  category: string[];
+  tags: string[];
+  raiting:number
 }

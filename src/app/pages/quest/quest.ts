@@ -13,17 +13,19 @@ export class Quest {
   profileService=Inject(profileService)
   quests: Question[]=[]
   constructor() {
-    for(let i=0;i<3;i++) {
-      this.profileService.getDate("questions"+i)
-        .subscribe((val: { title: string; category: any; tags: any | any; }) => {
-        this.quests[i].title = val.title;
-        this.quests[i].category = this.profileService.getDate(`${val.category}`);
-
-        for(let v=0;v<val.tags.length;v++) {
-          this.quests[i].tags[v] = this.profileService.getDate(`${val.tags[v]}`);
+    this.profileService.getDate("/rating-question/rating-by-question")
+      .subscribe((val :any) => {
+        for (let i = 0; i < 3; i++) {
+          this.quests[i].title = val[i].question.title;
+          for (let v = 0; v < val[i].question.category.length; v++) {
+            this.quests[i].category[v] = val[i].question.category[v].name;
+          }
+          for (let v = 0; v < val.tags.length; v++) {
+            this.quests[i].tags[v] = val[i].question.tags[v].name;
+          }
+          this.quests[i].raiting = val[i].ratingResult;
         }
       })
-    }
   }
   ngOnInit(){
 

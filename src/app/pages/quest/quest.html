@@ -37,12 +37,16 @@
   @for (quest of quests; track quest.title) {
     <div class="question-block">
       <div class="question-title">{{quest.title}}</div>
-      <div class="question-meta">Категория: {{quest.category}}</div>
+      <div class="question-meta">Категория:
+        @for (ctegory of quest.category; track ctegory) {
+        <span class="category">{{ctegory}}</span>
+      }</div>
       <div class="question-meta">Теги:
         @for (tag of quest.tags; track tag) {
           <span class="tag">{{tag}}</span>
         }
       </div>
+      <div class="question-title">{{quest.raiting}}</div>
     </div>
   } @empty {
     <p>Нет доступных вопросов</p>

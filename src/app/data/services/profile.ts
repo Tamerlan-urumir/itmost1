@@ -7,7 +7,7 @@ import { profile } from '../interfaces/profile.interface';
 })
 export class profileService {
   http =inject(HttpClient)
-  baseApiUrl='http://localhost:5062/api/'
+  baseApiUrl='http://localhost:7164/api'
   constructor() { }
   getDate(dopApiUrl:string){
     return this.http.get<profile[]>(`${this.baseApiUrl}${dopApiUrl}`)
