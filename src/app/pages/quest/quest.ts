@@ -1,6 +1,6 @@
 import {Component, HostListener, Inject} from '@angular/core';
 import {profileService} from '../../data/services/profile';
-import {Question} from '../../data/interfaces/quest.interface';
+import {Question} from '../../data/interfaces/questions.interface';
 import {CommonModule} from '@angular/common';
 import {Tags} from '../../data/interfaces/tags.interface';
 import {Category} from '../../data/interfaces/category.interface';

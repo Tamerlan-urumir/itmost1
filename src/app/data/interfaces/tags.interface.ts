@@ -1,4 +1,4 @@
-import {Question} from './quest.interface';
+import {Question} from './questions.interface';
 
 export interface Tags {
   id: number;
