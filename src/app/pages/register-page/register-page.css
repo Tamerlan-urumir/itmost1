@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :host {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -17,10 +18,12 @@ h1 {
   margin: 0;
   width: 19vw;
 }
-.buttonreg{
+
+.buttonreg {
   display: grid;
   grid-template-columns: 24dvw 24dvw;
 }
+
 /* Контейнер формы */
 .content {
   background-color: #00358B;
@@ -111,13 +114,13 @@ h1:hover, .join-button:hover {
     width: 80dvw;
     left: 10%;
   }
-
   h1 {
     width: 35vw;
     font-size: 2.5vh;
   }
-
   .join, .join-input, .join-button {
     font-size: 4vh;
   }
 }
+
+/*# sourceMappingURL=register-page.css.map */

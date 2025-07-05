@@ -1,28 +1,22 @@
 <div class="content">
+  <div class="buttonreg">
     <a href="http://localhost:4200/login"><h1 class='alpha'>Вход</h1></a>
     <h1 class='beta'>Регистрация</h1>
+  </div>
     <br>
      <label class="join">
         email
-        <input class="join-input" type="text" placeholder="Введите email">
+        <input class="join-input" type="text" placeholder="Введите email" #email>
     </label>
     <label class="join">
         Username
-        <input class="join-input" type="text" placeholder="Введите логин">
+        <input class="join-input" type="text" placeholder="Введите логин" #username>
     </label>
     <label class="join">
         Password
-        <input class="join-input" type="text" placeholder="Введите пароль">
+        <input class="join-input" type="text" placeholder="Введите пароль" #password>
     </label>
-     <div class="chek">
-    <input type="checkbox"class='cheker' checked />
-    <label for="scales">  Я являюсь экспертом</label>
-  </div>
-    <button class="join-button">Зарегистрироваться</button>
-
-
-
-
+    <button class="join-button" (click)="Registration(email.value,username.value,password.value)">Зарегистрироваться</button>
 </div>
 
 

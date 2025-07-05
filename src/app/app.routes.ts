@@ -7,7 +7,6 @@ import { Quest } from './pages/quest/quest';
 import { QuestionDetailComponent  } from './pages/q-a-page/q-a-page';
 import { Registuser } from './pages/registuser/registuser';
 import { User } from './pages/user/user';
-
 export const routes: Routes = [
     {path:'login',component:LoginPage},
     {path:'register',component:RegisterPage},
