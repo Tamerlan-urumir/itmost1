@@ -21,6 +21,9 @@ export class RegisterPage {
       password:password
     }
     console.log(this.regist)
-    this.profileService.postDate("/account/register",this.regist)
+    this.profileService.postDate("/account/register",this.regist).subscribe(val=>{
+
+      console.log(this.regist)
+    })
   }
 }
