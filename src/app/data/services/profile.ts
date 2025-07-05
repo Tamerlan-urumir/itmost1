@@ -8,10 +8,20 @@ import {QuestPost} from '../interfaces/questpost.interface';
 export class profileService {
   http =inject(HttpClient)
   baseApiUrl='https://localhost:7164/api'
-  userToken:string="";
+  userID:number=0;
   constructor() { }
   setToken(token:string){
-    this.userToken=token;
+    this.userID=this.JWTshifr(token);
+
+    console.log(this.userID," ",token);
+  }
+  getUserId(){return this.userID}
+  JWTshifr(token:string){
+    try {
+      return JSON.parse(atob(token.split('.')[1])).userProfileId;
+    } catch (e) {
+      return null;
+    }
   }
 getDate(dopApiUrl:string){
     return this.http.get<any>(`${this.baseApiUrl}${dopApiUrl}`)

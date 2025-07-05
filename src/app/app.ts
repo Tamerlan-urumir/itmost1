@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,16 @@ import {CommonModule} from '@angular/common';
   styleUrl: './app.scss'
 })
 export class App {
-
+  constructor(private router:Router) {
+  }
+  Hub(){
+    this.router.navigate(["/"]);}
+  Myquest(){
+    this.router.navigate(["/question"]);}
+  Myanswer(){
+    this.router.navigate(["/answer"]);}
+  UserPage(){
+    this.router.navigate(["/user"]);}
+  Login(){
+    this.router.navigate(["/login"]);}
 }

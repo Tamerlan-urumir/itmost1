@@ -1,30 +1,25 @@
 <body>
 <nav class="top-nav">
-    
+
   <div class="logo">
     <h2>МойСайт</h2>
   </div>
   <div class="nav-links">
-    <a href="http://localhost:4200/">
     <div class="nav-item active">
-      <span>Главная</span>
+      <span (click)="Hub()">Главная</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/question">
     <div class="nav-item">
-      <span>Мои вопросы</span>
+      <span (click)="Myquest()">Мои вопросы</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/answer">
     <div class="nav-item">
-      <span>Мои ответы</span>
+      <span (click)="Myanswer()">Мои ответы</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/user">
     <div class="nav-item">
-      <span>Личный кабинет</span>
+      <span (click)="UserPage()">Личный кабинет</span>
     </div>
-    </a>
+      <div class="nav-item">
+        <span (click)="Login()">Вход/Регистрация</span>
+      </div>
   </div>
 </nav>
   <router-outlet></router-outlet>

@@ -53,8 +53,8 @@ export class Quest {
         }
       });
     this.questionData= {
-      title: '',
-      content: '',
+      title: "",
+      content: "",
       isUrgent: true,
       categoryIds: [],
       tagIds: []
@@ -232,8 +232,13 @@ export class Quest {
           this.questionData.categoryIds.push(this.catid[i])
         }
       }
-      console.log('Данные форыы:', this.questionData);
-      this.profileService.postDate("/questions?userProfileId=1",this.questionData);
+      console.log('Данные формы:', this.questionData);
+      this.profileService.postDate("/questions?userProfileId="+this.profileService.getUserId(),this.questionData).subscribe(val=>{
+
+        console.log(this.questionData)
+      });
+      this.questionData.categoryIds=[];
+      this.questionData.tagIds=[];
       // Здесь можно добавить логику отправки данных
       this.closeModal();
       form.resetForm();

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {profileService} from '../../data/services/profile';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -13,7 +14,7 @@ export class RegisterPage {
     email:"",
     password:""
   }
-  constructor(private profileService: profileService){}
+  constructor(private profileService: profileService,private route:Router){}
   Registration(email:string,username:string,password:string){
     this.regist={
       username:username,
@@ -21,6 +22,10 @@ export class RegisterPage {
       password:password
     }
     console.log(this.regist)
-    this.profileService.postDate("/account/register",this.regist)
+    this.profileService.postDate("/account/register",this.regist).subscribe(val=>{
+
+      console.log(this.regist)
+    })
   }
+  Login(){this.route.navigate(["/login"])}
 }

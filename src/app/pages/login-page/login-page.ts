@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {profileService} from '../../data/services/profile';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +14,7 @@ export class LoginPage {
     username:"",
     password:""
   }
-  constructor(private profileService: profileService){}
+  constructor(private profileService: profileService,private route:Router){}
   LoginUser(username:string,password:string){
     this.login={
       username:username,
@@ -24,4 +26,5 @@ export class LoginPage {
       this.profileService.setToken(val.token);
     })
   }
+  Registr(){this.route.navigate(["/register"])}
 }
