@@ -28,7 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatButtonModule
   ],
-  template: `
+  template: `<div style='background-color :#011036;color:white'>
     <h2 mat-dialog-title>Ответ на вопрос</h2>
     
     <mat-dialog-content>
@@ -45,7 +45,7 @@ import { MatButtonModule } from '@angular/material/button';
               (click)="onSubmit()">
         Отправить
       </button>
-    </mat-dialog-actions>
+    </mat-dialog-actions></div>
   `,
   styles: [`
     .full-width { width: 100%; }

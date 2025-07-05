@@ -12,6 +12,10 @@ p{
   color: white;
   font-size: 28px;
 }
+button{
+  background-color: #4285f4;
+  color:white;
+}
 
 .rating-block {
    background-color: #011036;
@@ -41,7 +45,7 @@ p{
 }
 
 .link {
-  color: #0066cc;
+  color: white;
   text-decoration: none;
   font-size: 14px;
 }
@@ -55,4 +59,7 @@ p{
 .like-icon {
   color: green;
   margin-left: 5px;
+}
+a{
+  color:white;
 }

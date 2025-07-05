@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>Редактирование профиля</h2>
+
+<mat-dialog-content>
+  <form>
+    <!-- Поле ФИО -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ФИО</mat-label>
+      <input matInput [(ngModel)]="data.profile.fio" name="fio" required>
+    </mat-form-field>
+
+    <!-- Поле "О себе" -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>О себе</mat-label>
+      <textarea matInput [(ngModel)]="data.profile.bio" name="bio" rows="3"></textarea>
+    </mat-form-field>
+
+    <!-- Выбор компании -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Компания</mat-label>
+      <mat-select [(ngModel)]="data.profile.companyId" name="companyId">
+        @for (company of data.companies; track company.id) {
+          <mat-option [value]="company.id">{{ company.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Выбор должности -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Должность</mat-label>
+      <mat-select [(ngModel)]="data.profile.position" name="position">
+        @for (position of data.positions; track position.id) {
+          <mat-option [value]="position.id">{{ position.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Выбор категории -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Категория</mat-label>
+      <mat-select [(ngModel)]="data.profile.categoryId" name="categoryId">
+        @for (category of data.categories; track category.id) {
+          <mat-option [value]="category.id">{{ category.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Опыт работы -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Опыт работы (лет)</mat-label>
+      <input matInput type="number" [(ngModel)]="data.profile.experienceYears" name="experienceYears" min="0">
+    </mat-form-field>
+
+    <!-- Ссылка на GitHub -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>GitHub URL</mat-label>
+      <input matInput [(ngModel)]="data.profile.githubUrl" name="githubUrl">
+    </mat-form-field>
+
+    <!-- Ссылка на LinkedIn -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>LinkedIn URL</mat-label>
+      <input matInput [(ngModel)]="data.profile.linkedinUrl" name="linkedinUrl">
+    </mat-form-field>
+
+    <!-- Telegram ID -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Telegram ID</mat-label>
+      <input matInput [(ngModel)]="data.profile.telegramId" name="telegramId">
+    </mat-form-field>
+
+    <!-- Ссылка на резюме -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ссылка на резюме</mat-label>
+      <input matInput [(ngModel)]="data.profile.resumeLink" name="resumeLink">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class='dialog-button'>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Сохранить</button>
+</mat-dialog-actions>

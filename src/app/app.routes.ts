@@ -6,7 +6,8 @@ import { QuestionPage } from './pages/question-page/question-page';
 import { Quest } from './pages/quest/quest';
 import { QuestionDetailComponent  } from './pages/q-a-page/q-a-page';
 import { Registuser } from './pages/registuser/registuser';
-import { User } from './pages/user/user';
+import { UserProfileComponent } from './pages/user/user';
+
 export const routes: Routes = [
     {path:'login',component:LoginPage},
     {path:'register',component:RegisterPage},
@@ -14,7 +15,7 @@ export const routes: Routes = [
     {path:'question',component:QuestionPage},
     {path:'qa',component:QuestionDetailComponent},
     {path:'registuser',component:Registuser},
-    {path:'user',component:User},
+    {path:'user',component:UserProfileComponent},
     {path:'',component:Quest}
 
 ];
