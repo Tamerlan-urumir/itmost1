@@ -7,6 +7,7 @@ import {Category} from '../../data/interfaces/category.interface';
 import {concatMap,tap,finalize,Observable,from,toArray,map,last,catchError,filter,throwError,of,defaultIfEmpty} from 'rxjs';
 import {  EventEmitter, Output } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
+import {QuestPost} from '../../data/interfaces/questpost.interface';
 @Component({
   selector: 'app-quest',
   imports: [CommonModule, FormsModule],
@@ -27,13 +28,7 @@ export class Quest {
   squest:number[]=[];
   search:number[]=[];
   showModal = false;
-  questionData:{title:string, content:string,isUrgent: boolean,categoryIds:number[],tagIds:number[]}= {
-    title: '',
-    content: '',
-    isUrgent: false,
-    categoryIds: [],
-    tagIds: []
-  };
+  questionData:QuestPost;
   constructor(private profileService: profileService) {
     this.profileService.getDate("/questions")
       .subscribe((val :Question[]) => {
@@ -57,7 +52,13 @@ export class Quest {
           this.catname.push(val[i].name);
         }
       });
-
+    this.questionData= {
+      title: "",
+      content: "",
+      isUrgent: true,
+      categoryIds: [],
+      tagIds: []
+    };
   }
   Search(title:string){
     this.search = [];
@@ -231,8 +232,13 @@ export class Quest {
           this.questionData.categoryIds.push(this.catid[i])
         }
       }
-      console.log('Данные форыы:', this.questionData);
-      this.profileService.postDate("/questions?userProfileId=1",this.questionData);
+      console.log('Данные формы:', this.questionData);
+      this.profileService.postDate("/questions?userProfileId="+this.profileService.getUserId(),this.questionData).subscribe(val=>{
+
+        console.log(this.questionData)
+      });
+      this.questionData.categoryIds=[];
+      this.questionData.tagIds=[];
       // Здесь можно добавить логику отправки данных
       this.closeModal();
       form.resetForm();

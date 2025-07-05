@@ -2,12 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-html{
-  background-color: #cccccc;
-};
 .top-nav {
   background-color: #2d3748;
   color: white;
@@ -16,7 +13,7 @@ html{
   grid-template-columns: 1fr 10fr;
   align-items: center;
   height: 60px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -49,11 +46,14 @@ html{
 .nav-item:hover {
   background-color: #4a5568;
 }
-a { color: inherit;  }
+
+a {
+  color: inherit;
+}
 
 .nav-item.active {
   border-bottom-color: #4299e1;
   background-color: rgba(66, 153, 225, 0.1);
 }
 
-
+/*# sourceMappingURL=app.css.map */

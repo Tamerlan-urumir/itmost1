@@ -4,15 +4,11 @@
     <br>
     <label class="join">
         Username
-        <input class="join-input" type="text" placeholder="Введите логин">
+        <input class="join-input" type="text" placeholder="Введите логин" #username>
     </label>
     <label class="join">
         Password
-        <input class="join-input" type="text" placeholder="Введите пароль">
+        <input class="join-input" type="text" placeholder="Введите пароль" #password>
     </label>
-    <button class="join-button"> ВОЙТИ</button>
-
-
-
-
+    <button class="join-button" (click)="LoginUser(username.value,password.value)"> ВОЙТИ</button>
 </div>

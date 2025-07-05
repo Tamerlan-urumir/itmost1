@@ -14,31 +14,31 @@ export class QuestionService {
 
   getQuestionData(questionId: number = 1): Observable<QuestionData> {
     // Загрузка вопроса
-    const question$ = this.http.get<Question>(`${this.baseUrl}/questions/1`);
-    
+    const question$ = this.http.get<Question>(`${this.baseUrl}/questions/9`);
+
     // Загрузка комментариев вопроса
-    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/1`).pipe(
+    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/9`).pipe(
       map(comment => comment ? [comment] : [])
     );
-    
+
     // Загрузка ответов
-    const answers$ = this.http.get<Answer[]>(`${this.baseUrl}/answer/question/1`);
-    
+    const answers$ = this.http.get<Answer[]>(`${this.baseUrl}/answer/question/9`);
+
     return forkJoin([question$, questionComments$, answers$]).pipe(
       switchMap(([question, questionComments, answers]) => {
         // Загрузка комментариев для каждого ответа
-        const answerCommentsRequests = answers.map(answer => 
+        const answerCommentsRequests = answers.map(answer =>
           this.http.get<Comment[]>(`${this.baseUrl}/comment-answer/answer/${answer.id}`).pipe(
             map(comments => ({ answerId: answer.id, comments: comments || [] }))
         ));
-        
+
         return forkJoin(answerCommentsRequests).pipe(
           map(answerCommentsData => {
             const answerComments: { [key: number]: Comment[] } = {};
             answerCommentsData.forEach(item => {
               answerComments[item.answerId] = item.comments;
             });
-            
+
             return {
               question,
               questionComments,
@@ -57,7 +57,7 @@ export class QuestionService {
       questionId: 1     // Фиксированный ID вопроса
     };
     return this.http.post<Answer>(`${this.baseUrl}/answer`, body);
-    
+
   }
   // Добавим новые методы для комментариев
 postQuestionComment(content: string): Observable<Comment> {
