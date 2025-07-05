@@ -22,6 +22,7 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
+  
   "files": [],
   "references": [
     {

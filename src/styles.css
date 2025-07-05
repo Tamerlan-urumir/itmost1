@@ -41,13 +41,16 @@ body {
 }
 
 html {
-  background-color: #003A97;
+  background-color: #ff0000;
   width: 100vw;
 }
 
 img {
   width: 4vw;
   height: 4vh;
+}
+.dialog-button{
+background-color: #003A97
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,21 +1,84 @@
-<body>
-<div>
-  <p>Фамилия Имя Очество</p>
-  <p>Место работы/стажировки</p>
-  <p>Опыт работы</p>
-  <a href="https://youtu.be/dQw4w9WgXcQ" class="git">Ссылка на GIT</a>
-</div>
-<div class="rating-block">
-  <div class="rating-title">Рейтинг вопросов</div>
-  <div class="rating-title">Рейтинг ответов</div>
-  <div class="rating-item">
-    <a href="https://youtu.be/dQw4w9WgXcQ" class="link">Как настроить VPN?</a>
-    <div class="rating-value">75  <img  src="../../../assets/image/like.png"> </div>
-  </div>
-  <div class="rating-item">
-    <a href="https://youtu.be/dQw4w9WgXcQ" class="link">Лучший дистрибутив Linux</a>
-    <div class="rating-value">75 <img  src="../../../assets/image/like.png"></div>
-  </div>
-</div>
+<div class="profile-container">
+  @if (loading) {
+    <div class="loading">Загрузка профиля...</div>
+  }
+  
+  @if (!loading) {
+    <div class="profile-content">
+      <div class="profile-header">
+        <h1>Профиль пользователя</h1>
+        <button mat-flat-button color="primary" (click)="openEditDialog()">
+           Редактировать профиль
+        </button>
+      </div>
 
-</body>
+      <div class="profile-card">
+        <div class="profile-section">
+          <p class="fio">{{ profile.fio }}</p>
+          <p class="company-position">
+            {{ getCompanyName(profile.companyId) }}, {{ getPositionName(profile.position) }}
+          </p>
+          <p class="experience">Опыт работы: {{ profile.experienceYears }} лет</p>
+          <p class="category">Специализация: {{ getCategoryName(profile.categoryId) }}</p>
+          <p class="bio">{{ profile.bio }}</p>
+        </div>
+
+        <div class="profile-links">
+          @if (profile.githubUrl) {
+            <a [href]="profile.githubUrl" target="_blank" class="link">
+              code GitHub
+            </a>
+          }
+          <br>
+          @if (profile.linkedinUrl) {
+            <a [href]="profile.linkedinUrl" target="_blank" class="link">
+              work LinkedIn
+            </a>
+          }
+          <br>
+          @if (profile.telegramId) {
+            <a [href]="'https://t.me/' + profile.telegramId" target="_blank" class="link">
+              send Telegram
+            </a>
+          }
+          <br>
+          @if (profile.resumeLink) {
+            <a [href]="profile.resumeLink" target="_blank" class="link">
+              description Резюме
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="rating-block">
+        <h2>Рейтинги</h2>
+        
+        <div class="ratings-container">
+          <div class="rating-section">
+            <h3>Рейтинг вопросов</h3>
+            <div class="rating-item">
+              <a href="#" class="link">Как настроить VPN?</a>
+              <div class="rating-value">75 </div>
+            </div>
+            <div class="rating-item">
+              <a href="#" class="link">Лучший дистрибутив Linux</a>
+              <div class="rating-value">64 </div>
+            </div>
+          </div>
+          
+          <div class="rating-section">
+            <h3>Рейтинг ответов</h3>
+            <div class="rating-item">
+              <a href="#" class="link">Решение проблемы с Docker</a>
+              <div class="rating-value">89 </div>
+            </div>
+            <div class="rating-item">
+              <a href="#" class="link">Оптимизация запросов SQL</a>
+              <div class="rating-value">72 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -25,13 +25,13 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatButtonModule
   ],
-  template: `
+  template: `<div style='background-color :#011036;color:white'>
     <h2 mat-dialog-title>{{ data.title }}</h2>
     
     <mat-dialog-content>
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Ваш комментарий</mat-label>
-        <textarea matInput [(ngModel)]="content" rows="4" required></textarea>
+        <mat-label style='color:white'>Ваш комментарий</mat-label>
+        <textarea style='color:white' matInput [(ngModel)]="content" rows="4" required></textarea>
       </mat-form-field>
     </mat-dialog-content>
     
@@ -43,9 +43,10 @@ import { MatButtonModule } from '@angular/material/button';
         Отправить
       </button>
     </mat-dialog-actions>
+</div>
   `,
   styles: [`
-    .full-width { width: 100%; }
+    .full-width { width: 100%; color:white; }
     textarea { min-height: 100px; }
   `]
 })
