@@ -21,6 +21,11 @@
   text-align: center;
 }
 
+button {
+  background-color: #4285f4;
+  color: white;
+}
+
 .answer-button button {
   padding: 10px 20px;
   font-size: 1.1rem;

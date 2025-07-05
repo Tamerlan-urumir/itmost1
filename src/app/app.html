@@ -5,26 +5,21 @@
     <h2>МойСайт</h2>
   </div>
   <div class="nav-links">
-    <a href="http://localhost:4200/">
-    <div class="nav-item active">
+    <div class="nav-item" (click)="Hub()">
       <span>Главная</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/question">
-    <div class="nav-item">
+    <div class="nav-item"(click)="Myquest()">
       <span>Мои вопросы</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/answer">
-    <div class="nav-item">
+    <div class="nav-item" (click)="Myanswer()">
       <span>Мои ответы</span>
     </div>
-    </a>
-    <a href="http://localhost:4200/user">
-    <div class="nav-item">
+    <div class="nav-item" (click)="UserPage()">
       <span>Личный кабинет</span>
     </div>
-    </a>
+    <div class="nav-item" (click)="Login()">
+      <span>Вход/Регистрация</span>
+    </div>
   </div>
 </nav>
   <router-outlet></router-outlet>
