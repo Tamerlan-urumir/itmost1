@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Quest } from '../interfaces/answer.interface';
+import {profileService} from './profile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Answerpage {
  questHttp=inject(HttpClient)
-  constructor() { }
+  constructor(private profileservise:profileService) { }
   getQuestPage(){
-    return this.questHttp.get<Quest[]>('https://localhost:7164/api/questions')
+    return this.questHttp.get<Quest[]>(`https://localhost:7164/api/questions${this.profileservise.getUserId()}`)
   }
-  
+
 }

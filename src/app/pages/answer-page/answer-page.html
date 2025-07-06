@@ -2,7 +2,7 @@
 
 @for (quest of quests; track quest.id) {
     <div class="quest">
-    <div class="quest-item"><a href="http://localhost:4200/qa">{{quest.title}}</a></div>
+    <div class="quest-item">Route(quest.id)"</div>
     <div class="categori"> Категории
         @for (categories of quest.categories; track categories.id ) {
     <div class="skill_tags">{{ categories.name }}</div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map, switchMap } from 'rxjs';
 import { Question, Answer, Comment, QuestionData } from '../../data/interfaces/question.model';
+import {profileService} from './profile';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ import { Question, Answer, Comment, QuestionData } from '../../data/interfaces/q
 export class QuestionService {
   private baseUrl = 'https://localhost:7164/api';
 
-  constructor(private http: HttpClient) {}
-
-  getQuestionData(questionId: number = 1): Observable<QuestionData> {
+  constructor(private http: HttpClient, private questionId:number, private profileservise:profileService) {}
+  setId(id:number){this.questionId=id;}
+  getQuestionData(): Observable<QuestionData> {
     // Загрузка вопроса
-    const question$ = this.http.get<Question>(`${this.baseUrl}/questions/9`);
+    const question$ = this.http.get<Question>(`${this.baseUrl}/questions/${this.questionId}`);
 
     // Загрузка комментариев вопроса
-    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/9`).pipe(
+    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/${this.questionId}`).pipe(
       map(comment => comment ? [comment] : [])
     );
 
     // Загрузка ответов
-    const answers$ = this.http.get<Answer[]>(`${this.baseUrl}/answer/question/9`);
+    const answers$ = this.http.get<Answer[]>(`${this.baseUrl}/answer/question/${this.questionId}`);
 
     return forkJoin([question$, questionComments$, answers$]).pipe(
       switchMap(([question, questionComments, answers]) => {
@@ -53,8 +54,8 @@ export class QuestionService {
   postAnswer(content: string): Observable<Answer> {
     const body = {
       content: content,
-      userProfileId: 1, // В реальном приложении брать из авторизации
-      questionId: 1     // Фиксированный ID вопроса
+      userProfileId: this.profileservise.getUserId(), // В реальном приложении брать из авторизации
+      questionId: this.questionId     // Фиксированный ID вопроса
     };
     return this.http.post<Answer>(`${this.baseUrl}/answer`, body);
 
@@ -63,8 +64,8 @@ export class QuestionService {
 postQuestionComment(content: string): Observable<Comment> {
   const body = {
     content: content,
-    userProfileId: 1, // В реальном приложении брать из авторизации
-    questionId: 1     // Фиксированный ID вопроса
+    userProfileId: this.profileservise.getUserId(), // В реальном приложении брать из авторизации
+    questionId: this.questionId   // Фиксированный ID вопроса
   };
   return this.http.post<Comment>(`${this.baseUrl}/comment-question`, body);
 }
@@ -72,7 +73,7 @@ postQuestionComment(content: string): Observable<Comment> {
 postAnswerComment(answerId: number, content: string): Observable<Comment> {
   const body = {
     content: content,
-    userProfileId: 1, // В реальном приложении брать из авторизации
+    userProfileId: this.profileservise.getUserId(), // В реальном приложении брать из авторизации
     answerId: answerId
   };
   return this.http.post<Comment>(`${this.baseUrl}/comment-answer`, body);
