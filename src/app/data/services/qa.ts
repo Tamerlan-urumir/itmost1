@@ -18,7 +18,7 @@ export class QuestionService {
     const question$ = this.http.get<Question>(`${this.baseUrl}/questions/${this.questionId}`);
 
     // Загрузка комментариев вопроса
-    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/${this.questionId}`).pipe(
+    const questionComments$ = this.http.get<Comment>(`${this.baseUrl}/comment-question/questions/${this.questionId}`).pipe(
       map(comment => comment ? [comment] : [])
     );
 
