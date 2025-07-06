@@ -8,6 +8,8 @@ import {concatMap,tap,finalize,Observable,from,toArray,map,last,catchError,filte
 import {  EventEmitter, Output } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
 import {QuestPost} from '../../data/interfaces/questpost.interface';
+import {QuestionService} from '../../data/services/qa';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-quest',
   imports: [CommonModule, FormsModule],
@@ -29,7 +31,7 @@ export class Quest {
   search:number[]=[];
   showModal = false;
   questionData:QuestPost;
-  constructor(private profileService: profileService) {
+  constructor(private profileService: profileService,private questionService:QuestionService, private router:Router) {
     this.profileService.getDate("/questions")
       .subscribe((val :Question[]) => {
         this.quests=val;
@@ -251,5 +253,9 @@ export class Quest {
     if (event.target === modal) {
       this.closeModal();
     }
+  }
+  Route(id:number){
+    this.questionService.setId(id);
+    this.router.navigate(["/qa"])
   }
 }

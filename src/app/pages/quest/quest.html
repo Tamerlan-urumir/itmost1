@@ -93,7 +93,7 @@
 
 <div class="question-list">
   @for (quest of quests; track quest.id) {
-    <div class="question-block">
+    <div class="question-block" (click)="Route(quest.id)">
       <div class="question-title">{{quest.title}}</div>
       <div class="question-meta">Категория:
         @for (ctegory of quest.categories; track ctegory) {

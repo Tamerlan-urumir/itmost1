@@ -1,8 +1,8 @@
 <h1>Мои ответы</h1>
 
 @for (quest of quests; track quest.id) {
-    <div class="quest">
-    <div class="quest-item">Route(quest.id)"</div>
+    <div class="quest" (click)="Route(quest.id)">
+    <div class="quest-item">{{quest.title}}</div>
     <div class="categori"> Категории
         @for (categories of quest.categories; track categories.id ) {
     <div class="skill_tags">{{ categories.name }}</div>

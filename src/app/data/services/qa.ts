@@ -10,8 +10,8 @@ import {profileService} from './profile';
 })
 export class QuestionService {
   private baseUrl = 'https://localhost:7164/api';
-
-  constructor(private http: HttpClient, private questionId:number, private profileservise:profileService) {}
+  private questionId:number=0;
+  constructor(private http: HttpClient, private profileservise:profileService) {}
   setId(id:number){this.questionId=id;}
   getQuestionData(): Observable<QuestionData> {
     // Загрузка вопроса
