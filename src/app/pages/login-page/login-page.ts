@@ -25,6 +25,7 @@ export class LoginPage {
 
       this.profileService.setToken(val.token);
     })
+    this.route.navigate(["/"]);
   }
   Registr(){this.route.navigate(["/register"])}
 }

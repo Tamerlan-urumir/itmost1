@@ -49,10 +49,11 @@
     <form #questionForm="ngForm" (ngSubmit)="submitQuestion(questionForm)">
       <div class="form-group">
         <label for="questionTitle">Заголовок вопроса</label>
-        <input type="text" id="questionTitle" name="title"
+        <input type="text" id="questionTitle" name="title" style="color:white"
                [(ngModel)]="questionData.title"
                [value]="questtitle.value"
                placeholder="Введите заголовок вопроса" required #title>
+
       </div>
       <div class="form-group">
         <div class="tags-container">
@@ -78,7 +79,7 @@
       </div>
       <div class="form-group">
         <label for="questionBody">Основная часть вопроса</label>
-        <textarea id="questionBody" name="content"
+        <textarea id="questionBody" name="content" style="color:white"v
                   [(ngModel)]="questionData.content"
                   placeholder="Подробно опишите ваш вопрос" required></textarea>
       </div>

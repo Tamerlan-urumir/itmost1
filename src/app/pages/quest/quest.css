@@ -4,10 +4,6 @@ body {
   padding: 20px;
 }
 
-h1 {
-  color: black;
-}
-
 .search-container {
   display: flex;
   margin-bottom: 20px;
